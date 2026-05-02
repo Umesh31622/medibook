@@ -29,7 +29,7 @@ const {
 const { protect, adminOnly } = require("../middleware/auth"); // 👈 import
 
 // 🔐 Admin only
-router.post("/create-plan", protect, adminOnly, createPlan);
+router.post("/create-plan",createPlan);
 
 // 👀 Public (ya protect bhi kar sakte ho)
 router.get("/", getPlans);
