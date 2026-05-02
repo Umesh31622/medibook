@@ -102,6 +102,7 @@ const inventoryRoutes = require('./routes/inventoryRoutes');
 const quickBillRoutes = require('./routes/quickBillRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
+const marketingCampaignRoutes = require('./routes/marketingCampaignRoutes');
 // Add after other routes
 const dentalLabRoutes = require('./routes/dentalLabRoutes');
 const clinicalVisitRoutes = require('./routes/clinicalVisitRoutes');
@@ -169,6 +170,8 @@ app.use('/api/clinical-visits', clinicalVisitRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/plans', planRoutes);
 // Add after other routes
+app.use('/api/marketing', marketingCampaignRoutes);
+
 
 app.use('/api/transactions', transactionRoutes);
 // ❌ 404 handler - Last mein hona chahiye (ye sahi hai)
