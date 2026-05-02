@@ -8,13 +8,21 @@
 //   verifyPayment,
 // } = require("../controllers/planController");
 
-// router.post("/create-plan", createPlan);
+// const { protect, adminOnly } = require("../middleware/auth"); // 👈 import
+
+// // 🔐 Admin only
+// router.post("/create-plan",createPlan);
+
+// // 👀 Public (ya protect bhi kar sakte ho)
 // router.get("/", getPlans);
-// router.post("/create-subscription", createSubscription);
-// router.post("/verify", verifyPayment);
+
+// // 👤 User subscription (login required)
+// router.post("/create-subscription", protect, createSubscription);
+
+// // 🔐 Verify payment
+// router.post("/verify", protect, verifyPayment);
 
 // module.exports = router;
-
 
 const express = require("express");
 const router = express.Router();
@@ -22,22 +30,24 @@ const router = express.Router();
 const {
   createPlan,
   getPlans,
+  getPlanById,
+  updatePlan,
+  deletePlan,
   createSubscription,
   verifyPayment,
 } = require("../controllers/planController");
 
-const { protect, adminOnly } = require("../middleware/auth"); // 👈 import
+const { protect } = require("../middleware/auth");
 
-// 🔐 Admin only
-router.post("/create-plan",createPlan);
-
-// 👀 Public (ya protect bhi kar sakte ho)
+// 🔹 CRUD
+router.post("/create-plan", createPlan);
 router.get("/", getPlans);
+router.get("/:id", getPlanById);       // ✅ ADD THIS
+router.put("/:id", updatePlan);        // ✅ ADD THIS
+router.delete("/:id", deletePlan);     // ✅ ADD THIS
 
-// 👤 User subscription (login required)
+// 🔹 Subscription
 router.post("/create-subscription", protect, createSubscription);
-
-// 🔐 Verify payment
 router.post("/verify", protect, verifyPayment);
 
 module.exports = router;
