@@ -3,7 +3,6 @@ const router = express.Router();
 const { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/adminController');
 const { protect, adminOnly } = require('../middleware/auth');
 
-// Sab admin routes ke liye authentication aur admin role chahiye
 router.use(protect);
 router.use(adminOnly);
 

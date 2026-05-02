@@ -104,7 +104,9 @@ const reportRoutes = require('./routes/reportRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 // Add after other routes
 const dentalLabRoutes = require('./routes/dentalLabRoutes');
-
+const clinicalVisitRoutes = require('./routes/clinicalVisitRoutes');
+const subscriptionRoutes = require('./routes/subscriptionRoutes');
+const planRoutes = require('./routes/planRoutes');
 
 const app = express();
 
@@ -162,6 +164,10 @@ app.use('/api/inventory', inventoryRoutes);
 app.use('/api/quickbills', quickBillRoutes);
 app.use('/api/dental-lab', dentalLabRoutes);
 app.use('/api/reports', reportRoutes);
+// Add after other routes
+app.use('/api/clinical-visits', clinicalVisitRoutes);
+app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/plans', planRoutes);
 // Add after other routes
 
 app.use('/api/transactions', transactionRoutes);
